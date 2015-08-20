@@ -11,6 +11,12 @@ $this->title = 'Iniciativa Privada';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="cuentas-ip-index">
+    <p><strong>Comentarios:</strong></p>
+    <ul>
+        <li>Todos los campos son editables a excepción de Inversión de 2010 a 2014 que deben ser históricos</li>
+        <li>Te pido me confirmes si esto es lo que quieres para que se generen las demás hojas tipo Excel</li>
+
+    </ul>
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>

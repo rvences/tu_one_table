@@ -30,8 +30,8 @@ class m130524_201442_init extends Migration
         $this->batchInsert('user',
             array('username', 'auth_key', 'password_hash', 'email', 'status', 'created_at', 'updated_at'),
             array(
-                ['kory',  'RjwwBJFBEWPsRsj9oCcgivVErTFegjfm', '$2y$13$qCG9wSmSRq6C0FEMdU9pbeZWfYkwkXrSVG3boHf5Nv3dsbI4km9My', 'kvences@gmail.com', '10', '1438127540', '1438127540'  ],
-                ['kory2', 'RjwwBJFBEWPsRsj9oCcgivVErTFegjfm', '$2y$13$qCG9wSmSRq6C0FEMdU9pbeZWfYkwkXrSVG3boHf5Nv3dsbI4km9My', 'rafael.vences@gmail.com', '10', '1438127540', '1438127540'  ]
+                ['jcasturiano',  'RjwwBJFBEWPsRsj9oCcgivVErTFegjfm', '$2y$13$qCG9wSmSRq6C0FEMdU9pbeZWfYkwkXrSVG3boHf5Nv3dsbI4km9My', 'kvences@gmail.com', '10', '1438127540', '1438127540'  ],
+                ['mmedina', 'RjwwBJFBEWPsRsj9oCcgivVErTFegjfm', '$2y$13$qCG9wSmSRq6C0FEMdU9pbeZWfYkwkXrSVG3boHf5Nv3dsbI4km9My', 'rafael.vences@gmail.com', '10', '1438127540', '1438127540'  ]
             )
         );
     }
