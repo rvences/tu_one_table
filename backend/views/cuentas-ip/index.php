@@ -1,7 +1,5 @@
 <?php
-
 use yii\helpers\Html;
-use yii\helpers\Url;
 use kartik\grid\GridView;
 use common\models\User;
 
@@ -19,7 +17,6 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <p>
         <?= Html::a('Crear Cuenta IP', ['create'], ['class' => 'btn btn-success']) ?>
-        <?php  echo Url::to(['/archivo']);?>
     </p>
 
     <?php
@@ -425,6 +422,8 @@ $this->params['breadcrumbs'][] = $this->title;
             }
         ],
 
+
+        /*
         // Haciendo el campo de Documento escaneado campo editable
         [
             'class' => 'kartik\grid\EditableColumn',
@@ -438,20 +437,17 @@ $this->params['breadcrumbs'][] = $this->title;
                     'header' => 'Documento de la Propuesta',
                     'size' => 'md',     // http://demos.krajee.com/popover-x#settings
                     'inputType' => \kartik\editable\Editable::INPUT_FILE, // http://demos.krajee.com/editable
-                    'options'=>[
+                    'formOptions'=>[
                         'options' => [
-                            'pluginOptions' => [
-                                'name' => 'attachments',
-                                'options' => ['multiple' => true],
-                                'pluginOptions' => ['previewFileType' => 'any'],
-                                'uploadUrl' => '/archivo',
-                            ]
-                        ]
+                            'enctype' => 'multipart/form-data'
+                        ],
                     ],
+
+
 
                 ];
             }
-        ],
+        ],*/
 
 
 
