@@ -6,9 +6,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model backend\models\CuentasIp */
 
-$this->title = 'Create Cuentas Ip';
-$this->params['breadcrumbs'][] = ['label' => 'Cuentas Ips', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = 'Nueva cuenta de Iniciativa Privada';
 ?>
 <div class="cuentas-ip-create">
 

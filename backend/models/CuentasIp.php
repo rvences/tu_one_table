@@ -4,6 +4,7 @@ namespace backend\models;
 
 use Yii;
 use common\models\User;
+// Para manejo de archivos
 
 /**
  * This is the model class for table "cuentas_ip".
@@ -40,6 +41,10 @@ use common\models\User;
 class CuentasIp extends \yii\db\ActiveRecord
 {
     /**
+     * @var ArchivoSubido
+     */
+    public $archivo;
+    /**
      * @inheritdoc
      */
     public static function tableName()
@@ -59,7 +64,9 @@ class CuentasIp extends \yii\db\ActiveRecord
             [['i2010', 'i2011', 'i2012', 'i2013', 'i2014', 'i2015', 'monto_propuesta'], 'number', 'min'=>100000, 'max'=>10000000],
             [['status'], 'string', 'max' => 20],
             [['cuenta', 'categoria', 'subcuenta', 'campana', 'sector', 'puesto', 'nombre', 'tel', 'mail', 'direccion', 'temporalidad'], 'string', 'max' => 100],
-            [['productos', 'comentario', 'docto_propuesta'], 'string', 'max' => 255]
+            [['productos', 'comentario', 'docto_propuesta'], 'string', 'max' => 255],
+           // [['file'], 'file', 'skipOnEmpty'=>false, 'extensions'=>'pdf, doc, docx'],
+            [['archivo'], 'file', 'extensions'=>'pdf, doc, docx'],
         ];
     }
 
@@ -95,6 +102,7 @@ class CuentasIp extends \yii\db\ActiveRecord
             'productos' => 'Producto de Interés',
             'comentario' => 'Comentario',
             'docto_propuesta' => 'Documento de la Propuesta',
+            'archivo' => 'Documento a Subir',
         ];
     }
 
@@ -109,6 +117,20 @@ class CuentasIp extends \yii\db\ActiveRecord
     public function getUserName() {
         return $this->user->username;
     }
+
+    /**
+     * Función para subir el archivo
+     */
+    /*
+    public function subeArchivo()
+    {
+        if ($this->validate()) {
+            $this->archivo->saveAs('uploads/' . $this->archivo->baseName . '.' . $this->archivo->extension);
+            return true;
+        } else {
+            return false;
+        }
+    }*/
 
 
 }

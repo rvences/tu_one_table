@@ -28,6 +28,8 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php
     $gridColumns = [
 
+        ['class' => 'yii\grid\ActionColumn'],
+
 
 
         // Haciendo el campo de Estado editable
@@ -78,6 +80,40 @@ $this->params['breadcrumbs'][] = $this->title;
                 ];
             }
         ],
+
+        [
+            'class' => '\kartik\grid\FormulaColumn',
+            'header' =>'Monto de Inversión',
+            'value' => function ($model, $key, $index, $widget) {
+                $p = compact('model', 'key', 'index');
+                // Write your formula below
+                return $widget->col(15, $p) + $widget->col(16, $p) + $widget->col(17, $p) + $widget->col(18, $p) + $widget->col(19, $p) + $widget->col(20, $p);
+            },
+            'format' => 'decimal',
+        ],
+
+
+
+
+
+
+
+/*
+
+        [
+            [
+                'class' => '\kartik\grid\EditableColumn',
+
+                'value' => function ($model, $key, $index, $widget) {
+                    $p = compact('model', 'key', 'index');
+                    // Write your formula below
+                    return $widget->col(10, $p);// + $widget->col(4, $p);
+                }
+            ]
+        ],
+
+    */
+
 
         // Haciendo el campo de cuenta campo editable
         [
@@ -313,11 +349,26 @@ $this->params['breadcrumbs'][] = $this->title;
             }
         ],
 
-        'i2010',
-        'i2011',
-        'i2012',
-        'i2013',
-        'i2014',
+        [
+            'attribute' => 'i2010',
+            'format' => 'decimal',
+        ],
+        [
+            'attribute' => 'i2011',
+            'format' => 'decimal',
+        ],
+        [
+            'attribute' => 'i2012',
+            'format' => 'decimal',
+        ],
+        [
+            'attribute' => 'i2013',
+            'format' => 'decimal',
+        ],
+        [
+            'attribute' => 'i2014',
+            'format' => 'decimal',
+        ],
         // Haciendo el campo de inversion 2015 campo editable
         [
             'class' => 'kartik\grid\EditableColumn',
@@ -428,37 +479,18 @@ $this->params['breadcrumbs'][] = $this->title;
             }
         ],
 
-
-        /*
-        // Haciendo el campo de Documento escaneado campo editable
+       // 'docto_propuesta - No se edita directamente',
         [
-            'class' => 'kartik\grid\EditableColumn',
-            'attribute' => 'docto_propuesta',
-            'pageSummary' => true,
-            'readonly' => function ($model, $key, $index, $widget) {
-                return (!$model->status); // No se permite editar registros inactivos
-            },
-            'editableOptions' => function ($model, $key, $index, $widget) {
-                return [
-                    'header' => 'Documento de la Propuesta',
-                    'size' => 'md',     // http://demos.krajee.com/popover-x#settings
-                    'inputType' => \kartik\editable\Editable::INPUT_FILE, // http://demos.krajee.com/editable
-                    'formOptions'=>[
-                        'options' => [
-                            'enctype' => 'multipart/form-data'
-                        ],
-                    ],
+            'attribute' =>'docto_propuesta',
+            'format'=>'raw',
+            'value' =>function ($model) {
+                if ($model->docto_propuesta) {
+                    return Html::a('Propuesta', $model->docto_propuesta);
+                }
 
-
-
-                ];
             }
-        ],*/
 
-
-
-
-
+        ]
 
     ];
     ?>
@@ -471,6 +503,17 @@ $this->params['breadcrumbs'][] = $this->title;
         // Deshabilitando que se pueda hacer cualquier tipo de exportación evitando exportar .PDF
         'export' => false,
         'pjax' => true,
+
+        'beforeHeader'=>[
+            [
+                'columns'=>[
+                    ['content'=>'Cuenta', 'options'=>['colspan'=>9, 'class'=>'text-center warning']],
+                    ['content'=>'Datos de Contacto', 'options'=>['colspan'=>5, 'class'=>'text-center warning']],
+                    ['content'=>'Seguimiento', 'options'=>['colspan'=>13, 'class'=>'text-center warning']],
+                ],
+                'options'=>['class'=>'skip-export'] // remove this row from export
+            ]
+        ],
 
 
 
@@ -486,7 +529,8 @@ $this->params['breadcrumbs'][] = $this->title;
         'persistResize'=>false,
         'exportConfig'=>true,
 
-        'columns' => $gridColumns
+        'columns' => $gridColumns,
+
     ]); ?>
 
 

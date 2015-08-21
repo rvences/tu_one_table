@@ -67,6 +67,18 @@ return [
             'thousandSeparator' => ' ',
             'currencyCode' => 'US',
         ],
+/*
+        'assetManager' => [
+            'bundles' => [
+                'yii\bootstrap\BootstrapAsset' => [
+                    'basePath' => '@webroot',
+                    'baseUrl' => '@web',
+                    'css' => ['css/a.css'],
+                ]
+            ]
+
+        ],*/
+
     ],
     'params' => $params,
 ];
