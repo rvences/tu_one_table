@@ -40,8 +40,10 @@ $this->params['breadcrumbs'][] = $this->title;
             'value'=> 'username',
             'pageSummary' => true,
             'readonly' => function ($model, $key, $index, $widget) {
-                return (!$model->status); // No se permite editar registros inactivos
+                if ($model->user_id != Yii::$app->user->identity->id)
+                return true; // No se permite editar registros inactivos
             },
+            // Yii::$app->user->identity->id
             'editableOptions' => function ($model, $key, $index, $widget) {
                 return [
                     'header' => 'Gerente de la Cuenta',
@@ -65,7 +67,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'attribute' => 'status',
             'pageSummary' => true,
             'readonly' => function ($model, $key, $index, $widget) {
-                return (!$model->status); // No se permite editar registros inactivos
+                if ($model->user_id != Yii::$app->user->identity->id)
+                    return true; // No se permite editar registros inactivos
             },
             'editableOptions' => function ($model, $key, $index, $widget) {
                 return [
@@ -121,7 +124,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'attribute' => 'cuenta',
             'pageSummary' => true,
             'readonly' => function ($model, $key, $index, $widget) {
-                return (!$model->status); // No se permite editar registros inactivos
+                if ($model->user_id != Yii::$app->user->identity->id)
+                    return true; // No se permite editar registros inactivos
             },
             'editableOptions' => function ($model, $key, $index, $widget) {
                 return [
@@ -140,7 +144,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'attribute' => 'categoria',
             'pageSummary' => true,
             'readonly' => function ($model, $key, $index, $widget) {
-                return (!$model->status); // No se permite editar registros inactivos
+                if ($model->user_id != Yii::$app->user->identity->id)
+                    return true; // No se permite editar registros inactivos
             },
             'editableOptions' => function ($model, $key, $index, $widget) {
                 return [
@@ -159,7 +164,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'attribute' => 'subcuenta',
             'pageSummary' => true,
             'readonly' => function ($model, $key, $index, $widget) {
-                return (!$model->status); // No se permite editar registros inactivos
+                if ($model->user_id != Yii::$app->user->identity->id)
+                    return true; // No se permite editar registros inactivos
             },
             'editableOptions' => function ($model, $key, $index, $widget) {
                 return [
@@ -179,7 +185,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'attribute' => 'campana',
             'pageSummary' => true,
             'readonly' => function ($model, $key, $index, $widget) {
-                return (!$model->status); // No se permite editar registros inactivos
+                if ($model->user_id != Yii::$app->user->identity->id)
+                    return true; // No se permite editar registros inactivos
             },
             'editableOptions' => function ($model, $key, $index, $widget) {
                 return [
@@ -197,7 +204,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'attribute' => 'sector',
             'pageSummary' => true,
             'readonly' => function ($model, $key, $index, $widget) {
-                return (!$model->status); // No se permite editar registros inactivos
+                if ($model->user_id != Yii::$app->user->identity->id)
+                    return true; // No se permite editar registros inactivos
             },
             'editableOptions' => function ($model, $key, $index, $widget) {
                 return [
@@ -215,7 +223,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'attribute' => 'puesto',
             'pageSummary' => true,
             'readonly' => function ($model, $key, $index, $widget) {
-                return (!$model->status); // No se permite editar registros inactivos
+                if ($model->user_id != Yii::$app->user->identity->id)
+                    return true; // No se permite editar registros inactivos
             },
             'editableOptions' => function ($model, $key, $index, $widget) {
                 return [
@@ -233,7 +242,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'attribute' => 'nombre',
             'pageSummary' => true,
             'readonly' => function ($model, $key, $index, $widget) {
-                return (!$model->status); // No se permite editar registros inactivos
+                if ($model->user_id != Yii::$app->user->identity->id)
+                    return true; // No se permite editar registros inactivos
             },
             'editableOptions' => function ($model, $key, $index, $widget) {
                 return [
@@ -252,7 +262,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'pageSummary' => true,
 
             'readonly' => function ($model, $key, $index, $widget) {
-                return (!$model->status); // No se permite editar registros inactivos
+                if ($model->user_id != Yii::$app->user->identity->id)
+                    return true; // No se permite editar registros inactivos
             },
             'editableOptions' => function ($model, $key, $index, $widget) {
                 return [
@@ -270,7 +281,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'attribute' => 'mail',
             'pageSummary' => true,
             'readonly' => function ($model, $key, $index, $widget) {
-                return (!$model->status); // No se permite editar registros inactivos
+                if ($model->user_id != Yii::$app->user->identity->id)
+                    return true; // No se permite editar registros inactivos
             },
             'editableOptions' => function ($model, $key, $index, $widget) {
                 return [
@@ -288,7 +300,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'attribute' => 'direccion',
             'pageSummary' => true,
             'readonly' => function ($model, $key, $index, $widget) {
-                return (!$model->status); // No se permite editar registros inactivos
+                if ($model->user_id != Yii::$app->user->identity->id)
+                    return true; // No se permite editar registros inactivos
             },
             'editableOptions' => function ($model, $key, $index, $widget) {
                 return [
@@ -308,7 +321,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'format' => ['date', 'php:D j M Y'],
             'pageSummary' => true,
             'readonly' => function ($model, $key, $index, $widget) {
-                return (!$model->status); // No se permite editar registros inactivos
+                if ($model->user_id != Yii::$app->user->identity->id)
+                    return true; // No se permite editar registros inactivos
             },
             'editableOptions' => function ($model, $key, $index, $widget) {
                 return [
@@ -336,7 +350,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'attribute' => 'temporalidad',
             'pageSummary' => true,
             'readonly' => function ($model, $key, $index, $widget) {
-                return (!$model->status); // No se permite editar registros inactivos
+                if ($model->user_id != Yii::$app->user->identity->id)
+                    return true; // No se permite editar registros inactivos
             },
             'editableOptions' => function ($model, $key, $index, $widget) {
                 return [
@@ -376,7 +391,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'format' => 'decimal',
             'pageSummary' => true,
             'readonly' => function ($model, $key, $index, $widget) {
-                return (!$model->status); // No se permite editar registros inactivos
+                if ($model->user_id != Yii::$app->user->identity->id)
+                    return true; // No se permite editar registros inactivos
             },
             'editableOptions' => function ($model, $key, $index, $widget) {
                 return [
@@ -396,7 +412,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'pageSummary' => true,
             'format'=>'decimal',
             'readonly' => function ($model, $key, $index, $widget) {
-                return (!$model->status); // No se permite editar registros inactivos
+                if ($model->user_id != Yii::$app->user->identity->id)
+                    return true; // No se permite editar registros inactivos
             },
             'editableOptions' => function ($model, $key, $index, $widget) {
                 return [
@@ -417,7 +434,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'format' => ['date', 'php:D j M Y'],
             'pageSummary' => true,
             'readonly' => function ($model, $key, $index, $widget) {
-                return (!$model->status); // No se permite editar registros inactivos
+                if ($model->user_id != Yii::$app->user->identity->id)
+                    return true; // No se permite editar registros inactivos
             },
             'editableOptions' => function ($model, $key, $index, $widget) {
                 return [
@@ -447,7 +465,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'attribute' => 'productos',
             'pageSummary' => true,
             'readonly' => function ($model, $key, $index, $widget) {
-                return (!$model->status); // No se permite editar registros inactivos
+                if ($model->user_id != Yii::$app->user->identity->id)
+                    return true; // No se permite editar registros inactivos
             },
             'editableOptions' => function ($model, $key, $index, $widget) {
                 return [
@@ -466,7 +485,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'attribute' => 'comentario',
             'pageSummary' => true,
             'readonly' => function ($model, $key, $index, $widget) {
-                return (!$model->status); // No se permite editar registros inactivos
+                if ($model->user_id != Yii::$app->user->identity->id)
+                    return true; // No se permite editar registros inactivos
             },
             'editableOptions' => function ($model, $key, $index, $widget) {
                 return [
@@ -483,6 +503,7 @@ $this->params['breadcrumbs'][] = $this->title;
         [
             'attribute' =>'docto_propuesta',
             'format'=>'raw',
+
             'value' =>function ($model) {
                 if ($model->docto_propuesta) {
                     return Html::a('Propuesta', $model->docto_propuesta);
