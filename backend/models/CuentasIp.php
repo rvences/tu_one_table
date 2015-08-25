@@ -66,7 +66,7 @@ class CuentasIp extends \yii\db\ActiveRecord
             [['cuenta', 'categoria', 'subcuenta', 'campana', 'sector', 'puesto', 'nombre', 'tel', 'mail', 'direccion', 'temporalidad'], 'string', 'max' => 100],
             [['productos', 'comentario', 'docto_propuesta'], 'string', 'max' => 255],
            // [['file'], 'file', 'skipOnEmpty'=>false, 'extensions'=>'pdf, doc, docx'],
-            [['archivo'], 'file', 'extensions'=>'pdf, doc, docx'],
+            [['archivo'], 'file', 'skipOnEmpty'=>true, 'extensions'=>'pdf, doc, docx'],
         ];
     }
 

@@ -112,23 +112,18 @@ class CuentasIpController extends Controller
     public function actionCreate()
     {
         $model = new CuentasIp();
-
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            // Obteniendo la instancia del archivo a subir
-            $nombreImagen = $model->cuenta .'-'.date('Ymd-His');
-            // Solo se guarda la información si existe información en el modelo de archivo
-            if ($model->archivo) {
-                $model->archivo = UploadedFile::getInstance($model, 'archivo');
-                $model->archivo->saveAs('doctos/'.$nombreImagen.'.'.$model->archivo->extension );
+            // Obteniendo el archivo que se subió.
+            $model->archivo = UploadedFile::getInstance($model, 'archivo');
+            if ($model->archivo && $model->validate()) {
+
+                $nombreImagen = $model->cuenta .'-'.date('Ymd-His');
                 // Guardando la direccion en la BD
                 $model->docto_propuesta = 'doctos/' .$nombreImagen. '.' .$model->archivo->extension;
-
                 $model->save();
+                $model->archivo->saveAs('doctos/'.$nombreImagen.'.'.$model->archivo->extension );
+
             }
-
-
-
-
             return $this->redirect(['index', 'id' => $model->id]);
         } else {
             return $this->render('create', [
@@ -148,18 +143,17 @@ class CuentasIpController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            // Queda pendiente la funcionalidad de eliminar el archivo
-            if ($model->archivo) {
-                // Elimina el archivo actual
+            // Obteniendo el archivo que se subió.
+            $model->archivo = UploadedFile::getInstance($model, 'archivo');
+            if ($model->archivo && $model->validate()) {
                 unlink(Yii::$app->basePath.'/web/'.$model->docto_propuesta);
-                // Obteniendo la instancia del archivo a subir
+
                 $nombreImagen = $model->cuenta .'-'.date('Ymd-His');
-                $model->archivo = UploadedFile::getInstance($model, 'archivo');
-                $model->archivo->saveAs('doctos/'.$nombreImagen.'.'.$model->archivo->extension );
                 // Guardando la direccion en la BD
                 $model->docto_propuesta = 'doctos/' .$nombreImagen. '.' .$model->archivo->extension;
-
                 $model->save();
+                $model->archivo->saveAs('doctos/'.$nombreImagen.'.'.$model->archivo->extension );
+
             }
             return $this->redirect(['index', 'id' => $model->id]);
         } else {
