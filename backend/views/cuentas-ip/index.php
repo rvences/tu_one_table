@@ -2,6 +2,7 @@
 use yii\helpers\Html;
 use kartik\grid\GridView;
 use common\models\User;
+use backend\models\ContactosIp;
 
 /* @var $this yii\web\View */
 /* @var $searchModel backend\models\search\CuentasIpSearch */
@@ -30,11 +31,31 @@ $this->params['breadcrumbs'][] = $this->title;
 
         ['class' => 'yii\grid\ActionColumn'],
 
+        // Volviendo Colapsable
+        [
+            'class' => 'kartik\grid\ExpandRowColumn',
+            // http://demos.krajee.com/grid#expand-row-column
+            'value' => function ($modelo, $key, $index, $column) {
+
+                return GridView::ROW_COLLAPSED;
+            },
+            'expandOneOnly' =>true,
+            'detail' => function ($modelo, $key, $index, $column) {
+                $searchModel = new \backend\models\search\ContactosIpSearch();
+                $searchModel->cuentas_ip_id = $modelo->id;
+                //print_r(Yii::$app->request->queryParams);
+                $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+                return Yii::$app->controller->renderPartial('_contactos-details', [
+                    'searchModel' => $searchModel,
+                    'dataProvider' => $dataProvider,
+                ]);
+            },
+        ],
 
 
 
-
-        // Haciendo el campo de Estado editable
+        // Haciendo el campo de Gerente editable
         [
             'class' => 'kartik\grid\EditableColumn',
             'attribute' => 'user_id',
@@ -63,7 +84,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 
 
-        // Haciendo el campo de Estado editable
+        // Haciendo el campo de Status editable
         [
             'class' => 'kartik\grid\EditableColumn',
             'attribute' => 'status',
@@ -554,51 +575,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
         'columns' => $gridColumns,
 
+
     ]); ?>
-
-
-
-
-
-
-
-    <?php  /*=  GridView::widget([
-        'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-
-            //'id',
-            'user_id',
-
-            'status',
-            'cuenta',
-            'categoria',
-            'subcuenta',
-            'campana',
-            'sector',
-            'puesto',
-            'nombre',
-            'tel',
-            'mail',
-            'direccion',
-            'freunion',
-            'temporalidad',
-            'i2010',
-            'i2011',
-            'i2012',
-            'i2013',
-            'i2014',
-            'i2015',
-
-            'monto_propuesta',
-            'fcampana',
-            'productos',
-            'comentario',
-            'docto_propuesta',
-
-           // ['class' => 'yii\grid\ActionColumn'],
-        ],
-    ]); */ ?>
 
 </div>
