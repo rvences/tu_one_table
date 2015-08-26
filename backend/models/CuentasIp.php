@@ -119,6 +119,14 @@ class CuentasIp extends \yii\db\ActiveRecord
     }
 
     /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getContactosIps()
+    {
+        return $this->hasMany(ContactosIp::className(), ['cuentas_ip_id' => 'id']);
+    }
+
+    /**
      * Función para subir el archivo
      */
     /*

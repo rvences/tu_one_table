@@ -32,6 +32,8 @@ $this->params['breadcrumbs'][] = $this->title;
 
 
 
+
+
         // Haciendo el campo de Estado editable
         [
             'class' => 'kartik\grid\EditableColumn',
