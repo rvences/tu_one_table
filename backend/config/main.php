@@ -41,7 +41,7 @@ return [
             'displayTimezone' => 'America/Mexico_City',
 
             // set your timezone for date saved to db
-            'saveTimezone' => 'GMT+1',
+            'saveTimezone' => 'GMT-5',
             'autoWidget' => true,
         ]
     ],
@@ -66,6 +66,11 @@ return [
             'decimalSeparator' => ',',
             'thousandSeparator' => ' ',
             'currencyCode' => 'US',
+
+             'dateFormat' => 'php:D j M Y',
+    'datetimeFormat' => 'd-M-Y H:i:s',
+    'timeFormat' => 'H:i:s',
+
         ],
 /*
         'assetManager' => [

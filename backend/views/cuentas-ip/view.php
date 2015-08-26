@@ -6,17 +6,15 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model backend\models\CuentasIp */
 
-$this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Cuentas Ips', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
+
 ?>
 <div class="cuentas-ip-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h1><?= $this->title = 'Datos de:' . ' ' . $model->cuenta; ?></h1>
 
     <p>
-        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
+        <?= Html::a('Regresar', Yii::$app->request->referrer, ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Borrar', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
                 'confirm' => 'Are you sure you want to delete this item?',
@@ -25,7 +23,16 @@ $this->params['breadcrumbs'][] = $this->title;
         ]) ?>
     </p>
 
-    <?= DetailView::widget([
+
+    <div class="cuentas-ip-update">
+
+
+        <?= $this->render('_form-view', [
+            'model' => $model,
+        ]) ?>
+
+    </div>
+    <?php /*= DetailView::widget([
         'model' => $model,
         'attributes' => [
             'id',
@@ -55,6 +62,6 @@ $this->params['breadcrumbs'][] = $this->title;
             'comentario',
             'docto_propuesta',
         ],
-    ]) ?>
+    ]) */?>
 
 </div>

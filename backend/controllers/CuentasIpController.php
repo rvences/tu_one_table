@@ -146,7 +146,10 @@ class CuentasIpController extends Controller
             // Obteniendo el archivo que se subió.
             $model->archivo = UploadedFile::getInstance($model, 'archivo');
             if ($model->archivo && $model->validate()) {
-                unlink(Yii::$app->basePath.'/web/'.$model->docto_propuesta);
+                if ($model->docto_propuesta && file_exists(Yii::$app->basePath.'/web/'.$model->docto_propuesta)) {
+                        unlink(Yii::$app->basePath.'/web/'.$model->docto_propuesta);
+                }
+
 
                 $nombreImagen = $model->cuenta .'-'.date('Ymd-His');
                 // Guardando la direccion en la BD

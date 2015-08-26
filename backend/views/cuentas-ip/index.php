@@ -525,11 +525,12 @@ $this->params['breadcrumbs'][] = $this->title;
        // 'docto_propuesta - No se edita directamente',
         [
             'attribute' =>'docto_propuesta',
-            'format'=>'raw',
+            'format'=>'html',
 
             'value' =>function ($model) {
                 if ($model->docto_propuesta) {
                     return Html::a('Propuesta', $model->docto_propuesta);
+                    //return Html::a(Html::encode($model->docto_propuesta),$model->docto_propuesta);
                 }
 
             }
@@ -546,7 +547,7 @@ $this->params['breadcrumbs'][] = $this->title;
         // 'columns' => $gridColumns,
         // Deshabilitando que se pueda hacer cualquier tipo de exportación evitando exportar .PDF
         'export' => false,
-        'pjax' => true,
+        'pjax' => false,
 
         'beforeHeader'=>[
             [

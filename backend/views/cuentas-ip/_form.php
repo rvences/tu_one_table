@@ -2,7 +2,6 @@
 use yii\helpers\Html;
 use yii\helpers\ArrayHelper;
 use yii\widgets\ActiveForm;
-
 use common\models\User;
 
 
@@ -76,7 +75,8 @@ use common\models\User;
             <?= $form->field($model, 'direccion')->textInput(['maxlength' => true]) ?>
         </div>
         <div class="col-xs-2">
-            <?= $form->field($model, 'freunion')->textInput() ?>
+            <?= $form->field($model, 'freunion')->widget(\kartik\datecontrol\DateControl::classname() ); ?>
+
         </div>
         <div class="col-xs-2">
             <?= $form->field($model, 'temporalidad')->textInput(['maxlength' => true]) ?>
@@ -109,7 +109,7 @@ use common\models\User;
             <?= $form->field($model, 'monto_propuesta')->textInput(['maxlength' => true]) ?>
         </div>
         <div class="col-xs-2">
-            <?= $form->field($model, 'fcampana')->textInput() ?>
+            <?= $form->field($model, 'fcampana')->widget(\kartik\datecontrol\DateControl::classname() ); ?>
         </div>
         <div class="col-xs-4">
             <?= $form->field($model, 'productos')->textInput(['maxlength' => true]) ?>
@@ -119,12 +119,25 @@ use common\models\User;
         </div>
     </div>
 
+    <div class="row">
+        <div class="col-xs-4">
+            <?php if ($model->docto_propuesta) { ?>
+                <label class="control-label" for="cuentasip-archivo">Documento del Proyecto: </label>
+                <a id=cuentasip-archivo" href="<?=$model->docto_propuesta?>">Documento</a>
+            <?php } ?>
+            <?= $form->field($model, 'archivo')->fileInput() ?>
+        </div>
+
+    </div>
+
 
     <?php // = $form->field($model, 'docto_propuesta')->textInput(['maxlength' => true]) ?>
-    <?= $form->field($model, 'archivo')->fileInput() ?>
+
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Nueva Cuenta' : 'Actualizar Datos', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?= Html::a('Regresar', Yii::$app->request->referrer, ['class' => 'btn btn-primary']) ?>
+
     </div>
 
     <?php ActiveForm::end(); ?>
